@@ -1,85 +1,171 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gt.umg.ventaonline.entities;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity()
 @Table()
 public class Producto implements java.io.Serializable{
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_producto;
+    private Integer idProducto;
     
+   @ManyToOne()
+   @JoinColumn()
+    private Catalogo catalogo;
+   
+   @ManyToOne()
+   @JoinColumn()
+   private Usuario usuario;
+   
+   @ManyToOne()
+   @JoinColumn()
+   private Categoria categoria;
+   
+   private BigDecimal precio;
     
-    private String deascripcion;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaIngreso;
     
-    private String ESTADO_DESCRIP;
+    private String descripcion;
     
-    private String SERIE;
+    @ManyToOne()
+    @JoinColumn()
+    private EstadoProducto estadoproducto;
     
-    private Integer VALOR_PRENDA;
-
+    private boolean activo;
+    
+    private String marca;
+    
+    private String serie;
+    
+    private String urlImagen;
+    
     public Producto() {
     }
 
-    public Producto(Integer id_producto, String deascripcion, String ESTADO_DESCRIP, String SERIE, Integer VALOR_PRENDA) {
-        this.id_producto = id_producto;
-        this.deascripcion = deascripcion;
-        this.ESTADO_DESCRIP = ESTADO_DESCRIP;
-        this.SERIE = SERIE;
-        this.VALOR_PRENDA = VALOR_PRENDA;
+    public Producto(Integer idProducto, Catalogo catalogo, Usuario usuario, Categoria categoria, BigDecimal precio, Date fechaIngreso, String descripcion, EstadoProducto estadoproducto, boolean activo, String marca, String serie, String urlImagen) {
+        this.idProducto = idProducto;
+        this.catalogo = catalogo;
+        this.usuario = usuario;
+        this.categoria = categoria;
+        this.precio = precio;
+        this.fechaIngreso = fechaIngreso;
+        this.descripcion = descripcion;
+        this.estadoproducto = estadoproducto;
+        this.activo = activo;
+        this.marca = marca;
+        this.serie = serie;
+        this.urlImagen = urlImagen;
     }
 
-    public Integer getId_producto() {
-        return id_producto;
+    public Integer getIdProducto() {
+        return idProducto;
     }
 
-    public void setId_producto(Integer id_producto) {
-        this.id_producto = id_producto;
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
 
-    public String getDeascripcion() {
-        return deascripcion;
+    public Catalogo getCatalogo() {
+        return catalogo;
     }
 
-    public void setDeascripcion(String deascripcion) {
-        this.deascripcion = deascripcion;
+    public void setCatalogo(Catalogo catalogo) {
+        this.catalogo = catalogo;
     }
 
-    public String getESTADO_DESCRIP() {
-        return ESTADO_DESCRIP;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setESTADO_DESCRIP(String ESTADO_DESCRIP) {
-        this.ESTADO_DESCRIP = ESTADO_DESCRIP;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public String getSERIE() {
-        return SERIE;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public void setSERIE(String SERIE) {
-        this.SERIE = SERIE;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public Integer getVALOR_PRENDA() {
-        return VALOR_PRENDA;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public void setVALOR_PRENDA(Integer VALOR_PRENDA) {
-        this.VALOR_PRENDA = VALOR_PRENDA;
+    public EstadoProducto getEstadoproducto() {
+        return estadoproducto;
     }
 
+    public void setEstadoproducto(EstadoProducto estadoproducto) {
+        this.estadoproducto = estadoproducto;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getSerie() {
+        return serie;
+    }
+
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
+    
     
 
-    
+   
 }

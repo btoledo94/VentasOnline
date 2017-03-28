@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,6 +19,14 @@ public class Usuario implements java.io.Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    @ManyToOne()
+    @JoinColumn()
+    private Ciudad ciudad;
+    
+    private String correo;
+    
+    private String password;
+    
     private String nombre;
     
     private String apellido;
@@ -27,18 +37,24 @@ public class Usuario implements java.io.Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaIngreso;
     
+    private String direccion;
+        
     private boolean activo;
 
     public Usuario() {
         
     }
 
-    public Usuario(Integer id, String nombre, String apellido, Date fechaNacimiento, Date fechaIngreso, boolean activo) {
+    public Usuario(Integer id, Ciudad ciudad, String correo, String password, String nombre, String apellido, Date fechaNacimiento, Date fechaIngreso, String direccion, boolean activo) {
         this.id = id;
+        this.ciudad = ciudad;
+        this.correo = correo;
+        this.password = password;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
         this.fechaIngreso = fechaIngreso;
+        this.direccion = direccion;
         this.activo = activo;
     }
 
@@ -50,6 +66,22 @@ public class Usuario implements java.io.Serializable {
         this.id = id;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -89,6 +121,21 @@ public class Usuario implements java.io.Serializable {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-    
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
     
 }
