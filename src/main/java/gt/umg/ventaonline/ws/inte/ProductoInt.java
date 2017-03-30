@@ -20,7 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RestController()
 @RequestMapping(value = "/api/Producto",produces={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
 public interface ProductoInt {
+    
     @Transactional(readOnly = true)
     @RequestMapping(value={"","/"},method=RequestMethod.GET)
     public ResponseEntity<Producto> findAll() throws Exception;
+    
+    
 }

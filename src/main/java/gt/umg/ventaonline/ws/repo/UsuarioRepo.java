@@ -20,4 +20,10 @@ public interface UsuarioRepo extends JpaRepository<Usuario,Integer>{
     @Override()
     List<Usuario> findAll();
     
+    Usuario findById(Integer id);
+    
+    List<Usuario> findByNombresAndApellidosAndActivoTrue(String nombres, String apellidos);
+    
+    Usuario findByCorreo(String correo);
+    
 }
