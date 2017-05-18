@@ -31,7 +31,10 @@ public class Sesion implements java.io.Serializable{
     private String token;
     
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
+    private Date fechaInicio;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaFin;
 
     @ManyToOne()
     @JoinColumn()
@@ -41,13 +44,14 @@ public class Sesion implements java.io.Serializable{
         
     }
 
-    public Sesion(Integer id, String token, Date fecha, Usuario usuario) {
+    public Sesion(Integer id, String token, Date fechaInicio, Date fechaFin, Usuario usuario) {
         this.id = id;
         this.token = token;
-        this.fecha = fecha;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.usuario = usuario;
     }
-
+    
     public Integer getId() {
         return id;
     }
@@ -64,12 +68,20 @@ public class Sesion implements java.io.Serializable{
         this.token = token;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public Usuario getUsuario() {
@@ -79,5 +91,5 @@ public class Sesion implements java.io.Serializable{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-   
+    
 }

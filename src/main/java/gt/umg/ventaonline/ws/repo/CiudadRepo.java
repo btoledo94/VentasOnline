@@ -5,22 +5,20 @@
  */
 package gt.umg.ventaonline.ws.repo;
 
-import gt.umg.ventaonline.entities.Usuario;
+import gt.umg.ventaonline.entities.Ciudad;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author BYRON TOLEDO
+ * @author wilver
  */
-@Repository()
-public interface UsuarioRepo extends JpaRepository<Usuario,Integer>{
+public interface CiudadRepo extends JpaRepository<Ciudad , Integer>{
     
-    Usuario findByCorreo(String correo);
+    @Query("from Ciudad as c where c.estado.id = :estadoId")
+    List<Ciudad> findByEstadoId(@Param("estadoId") Integer estadoId);
     
-    @Query(" select count(u) from Usuario as u where u.correo = :correo ")
-    Long countByCorreo(@Param("correo") String correo);
     
 }

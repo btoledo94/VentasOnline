@@ -5,6 +5,7 @@
  */
 package gt.umg.ventaonline.ws.impl;
 
+import gt.umg.ventaonline.entities.Builder.UsuarioBuilder;
 import gt.umg.ventaonline.entities.Sesion;
 import gt.umg.ventaonline.entities.Usuario;
 import gt.umg.ventaonline.ws.inte.UsuarioInt;
@@ -28,73 +29,26 @@ public class UsuarioImpl implements UsuarioInt {
     @Autowired()
     private UsuarioRepo usuarioRepo;
     
-    @Autowired()
-    private SesionRepo sesionRepo;
-    
-    @Override
-    public ResponseEntity<Usuario> findAll() throws Exception {
-        List<Usuario> usuarios = usuarioRepo.findAll();
-        
-        return new ResponseEntity(usuarios, HttpStatus.OK);
-    }
-
     @Override
     public ResponseEntity<Usuario> create(Usuario usuario) throws Exception {
         
-        if("".equals(usuario.getNombre()) || usuario.getNombre()==null){
+        Usuario usuarioEntity = new UsuarioBuilder()
+                .setCiudad(usuario.getCiudad())
+                .setPassword(Md5Encrypt.get_md5(usuario.getPassword()))
+                .setNombre(usuario.getNombre())
+                .setApellido(usuario.getApellido())
+                .setFechaNacimiento(usuario.getFechaNacimiento())
+                .setDireccion(usuario.getDireccion())
+                .build();
         
+        if(usuarioEntity == null){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         
-        if("".equals(usuario.getApellido()) || usuario.getApellido()==null){
-        
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        if(usuarioRepo.countByCorreo(usuario.getCorreo()) > 0){
+            return new ResponseEntity(HttpStatus.FOUND);
         }
         
-        if("".equals(usuario.getCorreo()) || usuario.getCorreo()==null){
-        
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
-        
-        if("".equals(usuario.getPassword()) || usuario.getPassword()==null){
-        
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
-        
-                
-        usuario.setFechaIngreso(new Date());
-        usuario.setPassword(Md5Encrypt.get_md5(usuario.getPassword()));
-        
-        usuarioRepo.save(usuario);
-        
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
-    @Override
-    public ResponseEntity<Sesion> login(String correo, String password) throws Exception {
-        
-        Usuario usuario= usuarioRepo.findByCorreo(correo);
-         
-        if(usuario==null){
-           return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        
-        if(!usuario.getPassword().equals(Md5Encrypt.get_md5(password))){
-            return new ResponseEntity(HttpStatus.UNAUTHORIZED);            
-        }
-        
-        Sesion sesion = new Sesion();
-        Date fechaActual= new Date();
-        String Token= usuario.getCorreo() + fechaActual.getTime();
-        
-        Token = Md5Encrypt.get_md5(Token);
-        
-        sesion.setFecha(fechaActual);
-        sesion.setToken(Token);
-        sesion.setUsuario(usuario);
-        
-        sesionRepo.save(sesion);
-        
-        return new ResponseEntity(sesion,HttpStatus.OK);
+        return new ResponseEntity(usuarioRepo.save(usuarioEntity), HttpStatus.OK);
     }
 }

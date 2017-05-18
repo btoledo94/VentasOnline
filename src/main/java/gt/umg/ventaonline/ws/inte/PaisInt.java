@@ -15,6 +15,5 @@ public interface PaisInt {
     @Transactional(readOnly = true)
     @RequestMapping(value={"","/"},method=RequestMethod.GET)
     public ResponseEntity<Pais> findAll() throws Exception;
-
     
 }

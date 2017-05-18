@@ -5,7 +5,8 @@
  */
 package gt.umg.ventaonline.ws.repo;
 
-import gt.umg.ventaonline.entities.Usuario;
+import gt.umg.ventaonline.entities.Estado;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,14 +14,13 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author BYRON TOLEDO
+ * @author wilver
  */
 @Repository()
-public interface UsuarioRepo extends JpaRepository<Usuario,Integer>{
+public interface EstadoRepo extends JpaRepository<Estado, Integer> {
     
-    Usuario findByCorreo(String correo);
-    
-    @Query(" select count(u) from Usuario as u where u.correo = :correo ")
-    Long countByCorreo(@Param("correo") String correo);
+    @Query("from Estado as e "
+            + " where e.pais.id = :id")
+    List<Estado> findByPaisId(@Param("id") Integer id);
     
 }

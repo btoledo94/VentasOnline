@@ -45,7 +45,7 @@ public class Usuario implements java.io.Serializable {
         
     }
 
-    public Usuario(Integer id, Ciudad ciudad, String correo, String password, String nombre, String apellido, Date fechaNacimiento, Date fechaIngreso, String direccion, boolean activo) {
+    public Usuario(Ciudad ciudad, String correo, String password, String nombre, String apellido, Date fechaNacimiento, Date fechaIngreso, String direccion, boolean activo) {
         this.id = id;
         this.ciudad = ciudad;
         this.correo = correo;
