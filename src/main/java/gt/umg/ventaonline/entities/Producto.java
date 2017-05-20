@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class Producto implements java.io.Serializable{
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProducto;
+    private Integer id;
     
    @ManyToOne()
    @JoinColumn()
@@ -27,11 +27,7 @@ public class Producto implements java.io.Serializable{
    @ManyToOne()
    @JoinColumn()
    private Usuario usuario;
-   
-   @ManyToOne()
-   @JoinColumn()
-   private Categoria categoria;
-   
+        
    private BigDecimal precio;
     
     @Temporal(TemporalType.TIMESTAMP)
@@ -45,36 +41,26 @@ public class Producto implements java.io.Serializable{
     
     private boolean activo;
     
-    private String marca;
-    
-    private String serie;
-    
-    private String urlImagen;
-    
     public Producto() {
     }
 
-    public Producto(Integer idProducto, Catalogo catalogo, Usuario usuario, Categoria categoria, BigDecimal precio, Date fechaIngreso, String descripcion, EstadoProducto estadoproducto, boolean activo, String marca, String serie, String urlImagen) {
-        this.idProducto = idProducto;
+    public Producto(Integer id, Catalogo catalogo, Usuario usuario, BigDecimal precio, Date fechaIngreso, String descripcion, EstadoProducto estadoproducto, boolean activo) {
+        this.id = id;
         this.catalogo = catalogo;
         this.usuario = usuario;
-        this.categoria = categoria;
         this.precio = precio;
         this.fechaIngreso = fechaIngreso;
         this.descripcion = descripcion;
         this.estadoproducto = estadoproducto;
         this.activo = activo;
-        this.marca = marca;
-        this.serie = serie;
-        this.urlImagen = urlImagen;
     }
 
-    public Integer getIdProducto() {
-        return idProducto;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Catalogo getCatalogo() {
@@ -85,20 +71,28 @@ public class Producto implements java.io.Serializable{
         this.catalogo = catalogo;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-    
     public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 
     public String getDescripcion() {
@@ -124,48 +118,5 @@ public class Producto implements java.io.Serializable{
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getSerie() {
-        return serie;
-    }
-
-    public void setSerie(String serie) {
-        this.serie = serie;
-    }
-
-    public BigDecimal getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
-    }
-
-    public Date getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(Date fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
-    public String getUrlImagen() {
-        return urlImagen;
-    }
-
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
-    }
-    
-    
-
-   
+       
 }

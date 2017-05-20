@@ -13,7 +13,7 @@ public class Catalogo implements java.io.Serializable{
     
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCatalogo;
+    private Integer id;
     
     private String descripcion;
     
@@ -23,18 +23,18 @@ public class Catalogo implements java.io.Serializable{
         
     }
 
-    public Catalogo(Integer idCatalogo, String descripcion, boolean activo) {
-        this.idCatalogo = idCatalogo;
+    public Catalogo(Integer id, String descripcion, boolean activo) {
+        this.id = id;
         this.descripcion = descripcion;
         this.activo = activo;
     }
 
-    public Integer getIdCatalogo() {
-        return idCatalogo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCatalogo(Integer idCatalogo) {
-        this.idCatalogo = idCatalogo;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescripcion() {
@@ -52,5 +52,7 @@ public class Catalogo implements java.io.Serializable{
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-      
+
+    
+    
 }

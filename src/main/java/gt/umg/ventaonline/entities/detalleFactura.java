@@ -14,7 +14,7 @@ public class detalleFactura implements java.io.Serializable{
     
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
     
     @ManyToOne()
    @JoinColumn()
@@ -24,26 +24,22 @@ public class detalleFactura implements java.io.Serializable{
    @JoinColumn()
    private Producto producto;
    
-   @ManyToOne()
-   @JoinColumn()
-   private CostosEnvio costoEnvio;
-
+  
     public detalleFactura() {
     }
 
-    public detalleFactura(Integer Id, Factura factura, Producto producto, CostosEnvio costoEnvio) {
-        this.Id = Id;
+    public detalleFactura(Integer id, Factura factura, Producto producto) {
+        this.id = id;
         this.factura = factura;
         this.producto = producto;
-        this.costoEnvio = costoEnvio;
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(Integer Id) {
-        this.Id = Id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Factura getFactura() {
@@ -61,13 +57,5 @@ public class detalleFactura implements java.io.Serializable{
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-
-    public CostosEnvio getCostoEnvio() {
-        return costoEnvio;
-    }
-
-    public void setCostoEnvio(CostosEnvio costoEnvio) {
-        this.costoEnvio = costoEnvio;
-    }
-   
+          
 }

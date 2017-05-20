@@ -15,7 +15,7 @@ public class CostosEnvio implements java.io.Serializable{
     
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer IdCosto;
+    private Integer id;
     
     private BigDecimal precio;
     
@@ -31,19 +31,19 @@ public class CostosEnvio implements java.io.Serializable{
     public CostosEnvio() {
     }
 
-    public CostosEnvio(Integer IdCosto, BigDecimal precio, Pais pais, TipoEnvio tipoEnvio) {
-        this.IdCosto = IdCosto;
+    public CostosEnvio(Integer id, BigDecimal precio, Pais pais, TipoEnvio tipoEnvio) {
+        this.id = id;
         this.precio = precio;
         this.pais = pais;
         this.tipoEnvio = tipoEnvio;
     }
 
-    public Integer getIdCosto() {
-        return IdCosto;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCosto(Integer IdCosto) {
-        this.IdCosto = IdCosto;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public BigDecimal getPrecio() {
@@ -69,5 +69,6 @@ public class CostosEnvio implements java.io.Serializable{
     public void setTipoEnvio(TipoEnvio tipoEnvio) {
         this.tipoEnvio = tipoEnvio;
     }
+  
         
 }

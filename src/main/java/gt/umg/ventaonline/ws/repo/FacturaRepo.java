@@ -5,11 +5,17 @@
  */
 package gt.umg.ventaonline.ws.repo;
 
-import gt.umg.ventaonline.entities.Sesion;
+import gt.umg.ventaonline.entities.Factura;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ *
+ * @author BYRON TOLEDO
+ */
 @Repository()
-public interface SesionRepo extends JpaRepository<Sesion, Integer> {
+public interface FacturaRepo extends JpaRepository<Factura,Integer>{
+    
+    
     
 }

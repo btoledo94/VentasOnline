@@ -17,7 +17,7 @@ public class Factura implements java.io.Serializable{
     
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaIngreso;
@@ -26,25 +26,29 @@ public class Factura implements java.io.Serializable{
     @JoinColumn()
     private Usuario usuario;
 
+    @ManyToOne()
+    @JoinColumn()
+    private CostosEnvio costosEnvio;
+    
     public Factura() {
  
     }
 
-    public Factura(Integer Id, Date fechaIngreso, Usuario usuario) {
-        this.Id = Id;
+    public Factura(Date fechaIngreso, Usuario usuario, CostosEnvio costosEnvio) {
+        this.id = id;
         this.fechaIngreso = fechaIngreso;
         this.usuario = usuario;
+        this.costosEnvio = costosEnvio;
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(Integer Id) {
-        this.Id = Id;
+    public void setId(Integer id) {
+        this.id = id;
     }
-    
-    
+
     public Date getFechaIngreso() {
         return fechaIngreso;
     }
@@ -60,5 +64,14 @@ public class Factura implements java.io.Serializable{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-            
+
+    public CostosEnvio getCostosEnvio() {
+        return costosEnvio;
+    }
+
+    public void setCostosEnvio(CostosEnvio costosEnvio) {
+        this.costosEnvio = costosEnvio;
+    }
+
+                
 }

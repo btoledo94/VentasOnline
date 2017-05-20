@@ -12,24 +12,27 @@ public class EnvioCargo implements java.io.Serializable{
     
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer IdEnvio;
+    private Integer id;
     
     private String nombreEmpresa;
 
+    private String descripcion;
+    
     public EnvioCargo() {
     }
 
-    public EnvioCargo(Integer IdEnvio, String nombreEmpresa) {
-        this.IdEnvio = IdEnvio;
+    public EnvioCargo(Integer id, String nombreEmpresa, String descripcion) {
+        this.id = id;
         this.nombreEmpresa = nombreEmpresa;
+        this.descripcion = descripcion;
     }
 
-    public Integer getIdEnvio() {
-        return IdEnvio;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdEnvio(Integer IdEnvio) {
-        this.IdEnvio = IdEnvio;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombreEmpresa() {
@@ -39,6 +42,13 @@ public class EnvioCargo implements java.io.Serializable{
     public void setNombreEmpresa(String nombreEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
     }
-    
-    
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+  
 }

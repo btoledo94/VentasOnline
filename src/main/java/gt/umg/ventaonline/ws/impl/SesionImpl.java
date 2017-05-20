@@ -9,13 +9,13 @@ import gt.umg.ventaonline.entities.Sesion;
 import gt.umg.ventaonline.entities.Usuario;
 import gt.umg.ventaonline.ws.inte.SesionInt;
 import gt.umg.ventaonline.ws.repo.UsuarioRepo;
-import gt.umg.ventaonline.ws.repo.sesionRepo;
 import gt.umg.ventaonline.ws.security.Md5Encrypt;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import gt.umg.ventaonline.ws.repo.SesionRepo;
 
 /**
  *
@@ -28,7 +28,7 @@ public class SesionImpl implements SesionInt {
     private UsuarioRepo usuarioRepo;
     
     @Autowired()
-    private sesionRepo sesionRepo;
+    private SesionRepo sesionRepo;
     
     @Override
     public ResponseEntity<Sesion> login(String correo, String password) throws Exception {
