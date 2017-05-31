@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public interface FacturaInt {
     
     @Transactional(readOnly = true)
-    @RequestMapping(value={"","/"},method=RequestMethod.GET)
+    @RequestMapping(value={"","/"},method=RequestMethod.POST)
     public ResponseEntity<Factura> facturar(
     @RequestBody Factura factura
     )throws Exception;

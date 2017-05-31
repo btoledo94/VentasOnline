@@ -8,7 +8,6 @@ package gt.umg.ventaonline.ws.impl;
 import gt.umg.ventaonline.entities.Producto;
 import gt.umg.ventaonline.ws.inte.ProductoInt;
 import gt.umg.ventaonline.ws.repo.ProductoRepo;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +20,10 @@ import org.springframework.stereotype.Component;
 @Component()
 public class ProductoImpl implements ProductoInt {
      @Autowired()
-    private ProductoRepo usuarioRepo;
+    private ProductoRepo productoRepo;
      
      @Override
-    public ResponseEntity<Producto> findAll() throws Exception {
-      List<Producto> usuarios = usuarioRepo.findAll();
-      return new ResponseEntity(usuarios,HttpStatus.OK);
+    public ResponseEntity<Producto> findAll(Integer categoriaId) throws Exception {
+      return new ResponseEntity(productoRepo.findByCategoriaId(categoriaId),HttpStatus.OK);
  }
 }

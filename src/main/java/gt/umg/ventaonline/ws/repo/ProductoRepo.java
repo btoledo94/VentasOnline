@@ -9,12 +9,14 @@ package gt.umg.ventaonline.ws.repo;
 import gt.umg.ventaonline.entities.Producto;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository()
 public interface ProductoRepo extends JpaRepository<Producto,Integer>{
     
-    @Override()
-    List<Producto> findAll();
+    @Query("from Producto as c where c.categoria.id = :categoriaId")
+    List<Producto> findByCategoriaId(@Param("categoriaId") Integer categoriaId);
     
 }

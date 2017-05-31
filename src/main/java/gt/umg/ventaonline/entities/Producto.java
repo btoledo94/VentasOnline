@@ -22,7 +22,7 @@ public class Producto implements java.io.Serializable{
     
    @ManyToOne()
    @JoinColumn()
-    private Catalogo catalogo;
+    private Categoria categoria;
    
    @ManyToOne()
    @JoinColumn()
@@ -44,9 +44,9 @@ public class Producto implements java.io.Serializable{
     public Producto() {
     }
 
-    public Producto(Integer id, Catalogo catalogo, Usuario usuario, BigDecimal precio, Date fechaIngreso, String descripcion, EstadoProducto estadoproducto, boolean activo) {
+    public Producto(Integer id, Categoria categoria, Usuario usuario, BigDecimal precio, Date fechaIngreso, String descripcion, EstadoProducto estadoproducto, boolean activo) {
         this.id = id;
-        this.catalogo = catalogo;
+        this.categoria = categoria;
         this.usuario = usuario;
         this.precio = precio;
         this.fechaIngreso = fechaIngreso;
@@ -63,12 +63,12 @@ public class Producto implements java.io.Serializable{
         this.id = id;
     }
 
-    public Catalogo getCatalogo() {
-        return catalogo;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public Usuario getUsuario() {
@@ -118,5 +118,7 @@ public class Producto implements java.io.Serializable{
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    
        
 }

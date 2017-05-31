@@ -20,7 +20,7 @@ public interface UsuarioRepo extends JpaRepository<Usuario,Integer>{
     
     Usuario findByCorreo(String correo);
     
-    @Query(" select count(u) from Usuario as u where u.correo = :correo ")
+    @Query(" select count(u.correo) from Usuario as u where u.correo = :correo ")
     Long countByCorreo(@Param("correo") String correo);
     
 }
