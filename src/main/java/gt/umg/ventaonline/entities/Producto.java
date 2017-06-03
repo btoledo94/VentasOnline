@@ -20,6 +20,9 @@ public class Producto implements java.io.Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    private String nombreProducto;
+    private String marca;
+    
    @ManyToOne()
    @JoinColumn()
     private Categoria categoria;
@@ -44,8 +47,10 @@ public class Producto implements java.io.Serializable{
     public Producto() {
     }
 
-    public Producto(Integer id, Categoria categoria, Usuario usuario, BigDecimal precio, Date fechaIngreso, String descripcion, EstadoProducto estadoproducto, boolean activo) {
+    public Producto(Integer id, String nombreProducto, String marca, Categoria categoria, Usuario usuario, BigDecimal precio, Date fechaIngreso, String descripcion, EstadoProducto estadoproducto, boolean activo) {
         this.id = id;
+        this.nombreProducto = nombreProducto;
+        this.marca = marca;
         this.categoria = categoria;
         this.usuario = usuario;
         this.precio = precio;
@@ -61,6 +66,22 @@ public class Producto implements java.io.Serializable{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public Categoria getCategoria() {
@@ -118,7 +139,5 @@ public class Producto implements java.io.Serializable{
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
-    
-       
+      
 }
